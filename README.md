@@ -1,1 +1,1 @@
-My first repo that i created about my shellş scripts.
+some shell scipts that i writed about automation tasks.

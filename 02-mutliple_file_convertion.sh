@@ -13,4 +13,4 @@ for filename in "$srcDir"/*.$srcExt; do
         ffmpeg -i "$filename" "$destDir""$baseName"."$destExt"
 done
 
-echo "Conversion from ${srcExt} to ${destExt} complete!"
+echo "Conversion from ${srcExt} to ${destExt} complete! "

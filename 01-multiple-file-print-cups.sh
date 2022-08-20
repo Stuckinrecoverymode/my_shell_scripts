@@ -6,20 +6,21 @@
 # file_paths=$1
 printer_name=$1
 down_files_text=$2
-files=$(cat $downfiles_text | wc -l)
+files=$(cat $down_files_text | wc -l)
 # creating directory for downloading files
 mkdir ~/Downloads/files_downloaded
 cd ~/Downloads/files_downloaded
-
+count=1
 while [ $count -le $files ]; do
-	get_file_url=$(head $count $down_files_text)
+	get_file_url=$(head -n $count $down_files_text | tail -n+$count)
 	wget $get_file_url
+	((count++))
 done
 
 for file in ~/Downloads/files_downloaded/*.pdf; do
-	lp -d $printername $file
-	echo "$file dosyası yazdırılıyor!"
+	lp -d $printer_name $file
+	echo "$file is printing!"
 done
 
-echo "yazdırılma işlemi bitmiştir. Toplamda $files sayıda dosya yazdırılmıştır."
-echo "programdan çıkılıyor."
+echo "Printing job has completed. In total $files files printed"
+echo "Exiting! Bye!."
